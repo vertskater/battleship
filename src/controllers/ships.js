@@ -11,7 +11,12 @@
   return { len, sunk, isHit, isSunk };
 }; */
 
-class Ship {
+module.exports = class Ship {
+  /**
+   *
+   * @param {Number} len
+   * @param {Boolean} sunk
+   */
   constructor(len, sunk) {
     this.len = len;
     this.sunk = sunk;
@@ -23,6 +28,4 @@ class Ship {
   isSunk() {
     this.hitpoints === 0 ? (this.sunk = true) : (this.sunk = false);
   }
-}
-
-module.exports = Ship;
+};

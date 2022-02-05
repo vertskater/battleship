@@ -17,6 +17,8 @@ describe("testing gameboard object", () => {
       position = gameBoard.placeShips(1, 3, 5);
       position = gameBoard.placeShips(2, 5, 5);
       position = gameBoard.placeShips(3, 7, 5);
+      position = gameBoard.placeShips(4, 9, 3);
+      position = gameBoard.placeShips(5, 2, 3);
     });
     test("should return a array with string ship", () => {
       expect(position[3][5]).toMatch(/ship/);
@@ -31,23 +33,22 @@ describe("testing gameboard object", () => {
       );
     });
     test("should place an x were the gameboard is hit", () => {
-      position = gameBoard.receiveAttack(2, 4);
-      expect(position[2][4]).toMatch("X");
+      position = gameBoard.receiveAttack(0, 2);
+      expect(position[0][2]).toMatch("X");
     });
     test("should change length of ship object", () => {
       position = gameBoard.receiveAttack(7, 5);
       expect(position.hitpoints).toBe(2);
-      position = gameBoard.receiveAttack(7, 5);
-      position = gameBoard.receiveAttack(7, 5);
-      position = gameBoard.receiveAttack(7, 5);
+      position = gameBoard.receiveAttack(7, 6);
+      position = gameBoard.receiveAttack(7, 7);
       expect(position.hitpoints).toBe(0);
     });
     test("should test if ship is sunk", () => {
       position = gameBoard.receiveAttack(7, 5);
       expect(position.sunk).toBeFalsy();
-      position = gameBoard.receiveAttack(7, 5);
+      position = gameBoard.receiveAttack(7, 6);
       expect(position.sunk).toBeFalsy();
-      position = gameBoard.receiveAttack(7, 5);
+      position = gameBoard.receiveAttack(7, 7);
       expect(position.sunk).toBeTruthy();
     });
     test("should determine if all ships are sunk", () => {
@@ -55,11 +56,21 @@ describe("testing gameboard object", () => {
       expect(sunken).toBeFalsy();
       gameBoard.receiveAttack(3, 5);
       gameBoard.receiveAttack(5, 5);
-      gameBoard.receiveAttack(5, 5);
+      gameBoard.receiveAttack(5, 6);
       gameBoard.receiveAttack(7, 5);
-      gameBoard.receiveAttack(7, 5);
-      gameBoard.receiveAttack(7, 5);
+      gameBoard.receiveAttack(7, 6);
+      gameBoard.receiveAttack(7, 7);
+      gameBoard.receiveAttack(9, 3);
+      gameBoard.receiveAttack(9, 4);
+      gameBoard.receiveAttack(9, 5);
+      gameBoard.receiveAttack(9, 6);
+      gameBoard.receiveAttack(2, 3);
+      gameBoard.receiveAttack(2, 4);
+      gameBoard.receiveAttack(2, 5);
+      gameBoard.receiveAttack(2, 6);
+      gameBoard.receiveAttack(2, 7);
       sunken = gameBoard.allShipsSunk();
+      console.log(gameBoard);
       expect(sunken).toBeTruthy();
     });
   });

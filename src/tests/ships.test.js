@@ -18,7 +18,7 @@ describe("testing ship object", () => {
     });
     test("should proof, if ship is sunk", () => {
       newShip.isSunk();
-      expect(newShip.sunk).toBeFalsy;
+      expect(newShip.sunk).toBeFalsy();
       newShip.isHit();
       newShip.isHit();
       newShip.isSunk();
