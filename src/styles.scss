@@ -7,7 +7,22 @@
 html {
   font-family: "Prompt", sans-serif;
 }
-
+body {
+  background: linear-gradient(#4d194d, #006466);
+  color: #fff;
+}
+#game-boards {
+  padding: 5%;
+  text-align: center;
+  h2 {
+    margin: 20px 0;
+  }
+}
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 5em;
+}
 .player-grid,
 .computer-grid {
   display: grid;
@@ -16,8 +31,9 @@ html {
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   background-color: antiquewhite;
+  margin: auto;
   .grid-element {
-    border: 0.5px solid black;
+    border: 0.5px solid #4d194d;
   }
 }
 .player-grid {
@@ -26,4 +42,16 @@ html {
 .computer-grid {
   background-color: lightcoral;
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  #game-boards {
+    display: flex;
+    h1 {
+      display: block;
+    }
+    #player-board {
+      margin-right: 30px;
+    }
+  }
 }

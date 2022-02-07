@@ -27,7 +27,18 @@ class Gameboard {
    */
   placeShips(len, c1, c2) {
     const newShip = new Ship(len, false);
+    const isShip = this.board[c1][c2];
+    if (isNaN(isShip)) c1 += 1;
+    if (c1 > 9) c1 = 0;
     if (c2 + len <= 10) {
+      this.ships.push(newShip);
+      for (let i = 0; i < newShip.len; i++) {
+        this.board[c1][c2 + i] = "ship" + newShip.len;
+      }
+    }
+    if (c2 + len > 10) {
+      let newC2 = c2 + len - 10;
+      c2 = c2 - newC2;
       this.ships.push(newShip);
       for (let i = 0; i < newShip.len; i++) {
         this.board[c1][c2 + i] = "ship" + newShip.len;

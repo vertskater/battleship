@@ -34,5 +34,23 @@ function createGrid(parentElement) {
   }
 }
 
+function styleDom(index, element) {
+  let c2 = parseInt(element.dataset.c2, 10);
+  if (c2 + index > 10) {
+    let newC2 = c2 + index - 10;
+    for (let i = 1; i < newC2; i++) {
+      element = element.previousSibling;
+    }
+  }
+  element.style.backgroundColor = "green";
+  if (index > 1) {
+    for (let i = 1; i < index; i++) {
+      element.nextSibling.style.backgroundColor = "green";
+      element = element.nextSibling;
+    }
+  }
+}
+
 module.exports.on = on;
 module.exports.createGrid = createGrid;
+module.exports.styleDom = styleDom;
