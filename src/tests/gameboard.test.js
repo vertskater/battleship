@@ -62,6 +62,7 @@ describe("testing gameboard object", () => {
       gameBoard.receiveAttack(7, 7);
       gameBoard.receiveAttack(9, 3);
       gameBoard.receiveAttack(9, 4);
+      gameBoard.receiveAttack(9, 4);
       gameBoard.receiveAttack(9, 5);
       gameBoard.receiveAttack(9, 6);
       gameBoard.receiveAttack(2, 3);

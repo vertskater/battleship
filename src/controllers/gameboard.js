@@ -27,8 +27,8 @@ class Gameboard {
    */
   placeShips(len, c1, c2) {
     const newShip = new Ship(len, false);
-    this.ships.push(newShip);
     if (c2 + len <= 10) {
+      this.ships.push(newShip);
       for (let i = 0; i < newShip.len; i++) {
         this.board[c1][c2 + i] = "ship" + newShip.len;
       }
