@@ -3,7 +3,7 @@ import "./styles.scss";
 
 const Gameboard = require("./controllers/gameboard");
 const { Computer, Player } = require("./controllers/players");
-const { createGrid, on, styleDom } = require("./controllers/dom");
+const { createGrid, on, styleDom, styleHit } = require("./controllers/dom");
 
 //create dom Grid for Player and Computer
 const computerGrid = document.querySelector(".computer-grid");
@@ -31,6 +31,27 @@ on(playerBoard, ".grid-element", "click", (obj) => {
 });
 
 computer.init();
+
+on(computerBoard, ".grid-element", "click", (obj) => {
+  if (placeIndex > 5) {
+    let c1 = parseInt(obj.handleObj.dataset.c1, 10) - 1;
+    let c2 = parseInt(obj.handleObj.dataset.c2, 10) - 1;
+    const shipHit = computer.gameboard.receiveAttack(c1, c2);
+    styleHit(shipHit, obj.handleObj);
+    const coordinates = computer.computerPlay(player.gameboard);
+    const itemNr = getItemNr(coordinates);
+    styleHit(coordinates.isShip, playerGrid.children[itemNr]);
+    let computerWon = player.gameboard.allShipsSunk();
+    let playerWon = computer.gameboard.allShipsSunk();
+    console.log(computer.gameboard.board);
+  }
+});
+
+function getItemNr(coordinates) {
+  let { c1, c2 } = coordinates;
+  let gridItem = c1 * 10 + c2;
+  return gridItem;
+}
 
 //Add eventhandler for mouse over effekt
 

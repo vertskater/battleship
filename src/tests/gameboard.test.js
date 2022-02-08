@@ -37,18 +37,23 @@ describe("testing gameboard object", () => {
       expect(position[0][2]).toMatch("X");
     });
     test("should change length of ship object", () => {
-      position = gameBoard.receiveAttack(7, 5);
+      gameBoard.receiveAttack(7, 5);
+      position = gameBoard.ships[2];
       expect(position.hitpoints).toBe(2);
       position = gameBoard.receiveAttack(7, 6);
       position = gameBoard.receiveAttack(7, 7);
+      position = gameBoard.ships[2];
       expect(position.hitpoints).toBe(0);
     });
     test("should test if ship is sunk", () => {
-      position = gameBoard.receiveAttack(7, 5);
+      gameBoard.receiveAttack(7, 5);
+      position = gameBoard.ships[2];
       expect(position.sunk).toBeFalsy();
-      position = gameBoard.receiveAttack(7, 6);
+      gameBoard.receiveAttack(7, 6);
+      position = gameBoard.ships[2];
       expect(position.sunk).toBeFalsy();
-      position = gameBoard.receiveAttack(7, 7);
+      gameBoard.receiveAttack(7, 7);
+      position = gameBoard.ships[2];
       expect(position.sunk).toBeTruthy();
     });
     test("should determine if all ships are sunk", () => {
@@ -71,7 +76,6 @@ describe("testing gameboard object", () => {
       gameBoard.receiveAttack(2, 6);
       gameBoard.receiveAttack(2, 7);
       sunken = gameBoard.allShipsSunk();
-      console.log(gameBoard);
       expect(sunken).toBeTruthy();
     });
   });

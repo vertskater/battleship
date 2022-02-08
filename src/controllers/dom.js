@@ -50,7 +50,15 @@ function styleDom(index, element) {
     }
   }
 }
+function styleHit(shipHit, element) {
+  if (shipHit.includes("ship")) {
+    element.style.backgroundColor = "red";
+  } else {
+    element.style.backgroundColor = "gray";
+  }
+}
 
 module.exports.on = on;
 module.exports.createGrid = createGrid;
 module.exports.styleDom = styleDom;
+module.exports.styleHit = styleHit;

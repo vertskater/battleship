@@ -65,7 +65,7 @@ class Gameboard {
       currentShip.isHit();
       currentShip.isSunk();
       this.board[c1][c2] = "X";
-      return currentShip;
+      return "ship";
     }
   }
   allShipsSunk() {

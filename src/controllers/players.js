@@ -20,15 +20,16 @@ module.exports.Computer = class Computer {
       this.gameboard.placeShips(i, c1, c2);
     }
   }
-  computerPlay() {
+  computerPlay(gameboard) {
     let c1 = Math.floor(Math.random() * 10);
     let c2 = Math.floor(Math.random() * 10);
-    let boardPos = this.gameboard.board[c1][c2];
+    let boardPos = gameboard.board[c1][c2];
     while (boardPos === "X") {
       c1 = Math.floor(Math.random() * 10);
       c2 = Math.floor(Math.random() * 10);
-      boardPos = this.gameboard.board[c1][c2];
+      boardPos = gameboard.board[c1][c2];
     }
-    this.gameboard.receiveAttack(c1, c2);
+    const isShip = gameboard.receiveAttack(c1, c2);
+    return { c1, c2, isShip };
   }
 };
