@@ -3,13 +3,20 @@ import "./styles.scss";
 
 const Gameboard = require("./controllers/gameboard");
 const { Computer, Player } = require("./controllers/players");
-const { createGrid, on, styleDom, styleHit } = require("./controllers/dom");
+const {
+  createGrid,
+  on,
+  styleDom,
+  styleHit,
+  winner,
+} = require("./controllers/dom");
 
 //create dom Grid for Player and Computer
 const computerGrid = document.querySelector(".computer-grid");
 const computerBoard = document.querySelector("#computer-board");
 const playerBoard = document.querySelector("#player-board");
 const playerGrid = document.querySelector(".player-grid");
+const winMessage = document.querySelector("#win-message");
 createGrid(playerGrid);
 createGrid(computerGrid);
 
@@ -32,6 +39,10 @@ on(playerBoard, ".grid-element", "click", (obj) => {
 
 computer.init();
 
+setTimeout(() => {
+  winMessage.classList.add("hide");
+}, 3000);
+
 on(computerBoard, ".grid-element", "click", (obj) => {
   if (placeIndex > 5) {
     let c1 = parseInt(obj.handleObj.dataset.c1, 10) - 1;
@@ -43,7 +54,7 @@ on(computerBoard, ".grid-element", "click", (obj) => {
     styleHit(coordinates.isShip, playerGrid.children[itemNr]);
     let computerWon = player.gameboard.allShipsSunk();
     let playerWon = computer.gameboard.allShipsSunk();
-    console.log(computer.gameboard.board);
+    winner(computerWon, playerWon);
   }
 });
 

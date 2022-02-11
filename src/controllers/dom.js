@@ -58,7 +58,22 @@ function styleHit(shipHit, element) {
   }
 }
 
+function winner(cWon, pWon) {
+  const winMessage = document.querySelector("#win-message");
+  if (pWon) {
+    winMessage.innerHTML = "Yeah, you won the Game!";
+    winMessage.style.backgroundColor = "lightgreen";
+    winMessage.classList.remove("hide");
+  }
+  if (cWon) {
+    winMessage.textContent = "You Lose, Computer won the Game!!";
+    winMessage.style.backgroundColor = "red";
+    winMessage.classList.remove("hide");
+  }
+}
+
 module.exports.on = on;
 module.exports.createGrid = createGrid;
 module.exports.styleDom = styleDom;
 module.exports.styleHit = styleHit;
+module.exports.winner = winner;

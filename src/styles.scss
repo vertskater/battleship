@@ -43,7 +43,29 @@ h1 {
   background-color: lightcoral;
   cursor: pointer;
 }
-
+#win-message {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  bottom: 5%;
+  left: 5%;
+  background-color: #4d194d;
+  border: 5px solid #006466;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+  transition: transform 300ms ease-in-out;
+  button {
+    display: none;
+  }
+}
+#win-message.hide {
+  transform: scale(0);
+}
 @media (min-width: 768px) {
   #game-boards {
     display: flex;
