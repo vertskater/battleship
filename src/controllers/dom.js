@@ -43,9 +43,11 @@ function styleDom(index, element) {
     }
   }
   element.style.backgroundColor = "green";
+  element.setAttribute("data-color", "green");
   if (index > 1) {
     for (let i = 1; i < index; i++) {
       element.nextSibling.style.backgroundColor = "green";
+      element.nextSibling.setAttribute("data-color", "green");
       element = element.nextSibling;
     }
   }
@@ -53,8 +55,10 @@ function styleDom(index, element) {
 function styleHit(shipHit, element) {
   if (shipHit.includes("ship")) {
     element.style.backgroundColor = "red";
+    element.setAttribute("data-clicked", "isClicked");
   } else {
     element.style.backgroundColor = "gray";
+    element.setAttribute("data-clicked", "isClicked");
   }
 }
 

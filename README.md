@@ -1,6 +1,6 @@
 # battleship
 
-Battleship Game, created with the Odin Project. This Project is to leran jest and unittests.
+Battleship Game. This Project is to learn jest and unittests.
 
 ## Building and running on localhost
 

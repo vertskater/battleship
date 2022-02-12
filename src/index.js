@@ -30,6 +30,10 @@ let placeIndex = 1;
 on(playerBoard, ".grid-element", "click", (obj) => {
   let c1 = parseInt(obj.handleObj.dataset.c1, 10) - 1;
   let c2 = parseInt(obj.handleObj.dataset.c2, 10) - 1;
+  let itemColor = obj.handleObj.dataset.color;
+  if (itemColor === "green") {
+    return;
+  }
   if (placeIndex < 6) {
     player.gameboard.placeShips(placeIndex, c1, c2);
     styleDom(placeIndex, obj.handleObj);
@@ -45,6 +49,10 @@ setTimeout(() => {
 
 on(computerBoard, ".grid-element", "click", (obj) => {
   if (placeIndex > 5) {
+    let isClicked = obj.handleObj.dataset.clicked;
+    if (isClicked === "isClicked") {
+      return;
+    }
     let c1 = parseInt(obj.handleObj.dataset.c1, 10) - 1;
     let c2 = parseInt(obj.handleObj.dataset.c2, 10) - 1;
     const shipHit = computer.gameboard.receiveAttack(c1, c2);
